@@ -11,7 +11,7 @@
 	<groupId>com.rvslab.chapter3</groupId>
 	<artifactId>bootwebflux</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bootwebflux</name>
+	<name>boothateoas</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
