@@ -1,0 +1,12 @@
+# NodeJS
+node_modules/
+coverage/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Project
+dist/
+target/
+data/
