@@ -6,12 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
-class BootactuatorApplication {
-    @Bean
-    fun getCounterService(): CounterService {
-        return CounterService()
-    }
-}
+class BootactuatorApplication
 
 fun main(args: Array<String>) {
     SpringApplication.run(BootactuatorApplication::class.java, *args)
