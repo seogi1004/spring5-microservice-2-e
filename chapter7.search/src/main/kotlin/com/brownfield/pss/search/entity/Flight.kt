@@ -15,18 +15,21 @@ class Flight {
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0
 
-    var flightNumber: String
-    var origin: String
-    var destination: String
-    var flightDate: String
+    var flightNumber: String = ""
+    var origin: String = ""
+    var destination: String = ""
+    var flightDate: String = ""
 
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "fare_Id")
-    var fares: Fares
+    var fares: Fares? = null
 
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "inv_Id")
-    var inventory: Inventory
+    var inventory: Inventory? = null
+
+
+    constructor() : super() {}
 
 
     constructor(flightNumber: String, origin: String, destination: String, flightDate: String, fares: Fares,

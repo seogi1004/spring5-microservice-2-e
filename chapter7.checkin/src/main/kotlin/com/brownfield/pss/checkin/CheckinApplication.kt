@@ -28,13 +28,13 @@ class CheckinApplication : CommandLineRunner {
 
 
         logger.info("Looking to load checkedIn record...")
-        logger.info("Result: " + repository!!.findOne(result.id))
+        logger.info("Result: " + repository!!.findById(result.id))
 
 
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(CheckinApplication::class.java!!)
+        private val logger = LoggerFactory.getLogger(CheckinApplication::class.java)
 
         @JvmStatic
         fun main(args: Array<String>) {

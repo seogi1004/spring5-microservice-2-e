@@ -89,8 +89,8 @@ constructor(internal var bookingRepository: BookingRepository,
                 .uri("/fares/get?flightNumber=" + record.flightNumber + "&flightDate=" + record.flightDate)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
-                .flatMap({ response -> response.bodyToMono(Fare::class.java) })
-        result.subscribe({ fare -> checkFare(record.fare!!, fare.fare) })
+                .flatMap { response -> response.bodyToMono(Fare::class.java) }
+        result.subscribe { fare -> checkFare(record.fare!!, fare.fare) }
 
     }
 

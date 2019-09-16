@@ -17,6 +17,9 @@ class Inventory {
 
     var count: Int = 0
 
+
+    constructor() : super() {}
+
     constructor(count: Int) : super() {
         this.count = count
     }

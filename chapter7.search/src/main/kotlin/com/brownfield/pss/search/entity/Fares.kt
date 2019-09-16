@@ -14,14 +14,16 @@ class Fares {
     @Column(name = "fare_id")
     var id: Long = 0
 
-    var fare: String
-    var currency: String
+    var fare: String = ""
+    var currency: String = ""
 
 
     constructor(fare: String, currency: String) : super() {
         this.fare = fare
         this.currency = currency
     }
+
+    constructor() : super() {}
 
     override fun toString(): String {
         return "Fares [id=$id, fare=$fare, currency=$currency]"

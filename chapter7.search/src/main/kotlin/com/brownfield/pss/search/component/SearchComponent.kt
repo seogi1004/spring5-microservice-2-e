@@ -12,19 +12,21 @@ import com.brownfield.pss.search.entity.Flight
 import com.brownfield.pss.search.entity.Inventory
 import com.brownfield.pss.search.repository.FlightRepository
 
+
 @Component
 class SearchComponent @Autowired
 constructor(private val flightRepository: FlightRepository) {
 
     fun search(query: SearchQuery): List<Flight> {
-        val flights = flightRepository.findByOriginAndDestinationAndFlightDate(query.origin,
+        val flights = flightRepository.findByOriginAndDestinationAndFlightDate(
+                query.origin,
                 query.destination,
                 query.flightDate)
         val searchResult = ArrayList<Flight>()
         searchResult.addAll(flights)
         flights.forEach { flight ->
             flight.fares
-            val inv = flight.inventory.count
+            val inv = flight.inventory!!.count
             if (inv < 0) {
                 searchResult.remove(flight)
             }
@@ -36,11 +38,11 @@ constructor(private val flightRepository: FlightRepository) {
         logger.info("Updating inventory for flight $flightNumber innventory $inventory")
         val flight = flightRepository.findByFlightNumberAndFlightDate(flightNumber, flightDate)
         val inv = flight.inventory
-        inv.count = inventory
+        inv!!.count = inventory
         flightRepository.save(flight)
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(SearchComponent::class.java!!)
+        private val logger = LoggerFactory.getLogger(SearchComponent::class.java)
     }
 }

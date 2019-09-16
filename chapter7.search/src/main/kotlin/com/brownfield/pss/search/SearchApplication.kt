@@ -8,18 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 
 import com.brownfield.pss.search.entity.Fares
 import com.brownfield.pss.search.entity.Flight
 import com.brownfield.pss.search.entity.Inventory
 import com.brownfield.pss.search.repository.FlightRepository
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2
-
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableSwagger2
 class SearchApplication : CommandLineRunner {
 
     @Autowired
@@ -36,7 +31,7 @@ class SearchApplication : CommandLineRunner {
         flights.add(Flight("BF103", "HOU", "SFO", "22-JAN-18", Fares("103", "USD"), Inventory(100)))
         flights.add(Flight("BF104", "LAX", "SFO", "22-JAN-18", Fares("104", "USD"), Inventory(100)))
 
-        flightRepository!!.save(flights)
+        flightRepository!!.saveAll(flights)
 
         logger.info("Looking to load flights...")
         for (flight in flightRepository.findByOriginAndDestinationAndFlightDate("NYC", "SFO", "22-JAN-18")) {

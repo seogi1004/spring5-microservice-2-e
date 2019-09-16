@@ -27,11 +27,11 @@ internal constructor(internal var checkinRepository: CheckinRepository, internal
     }
 
     fun getCheckInRecord(id: Long): CheckInRecord {
-        return checkinRepository.findOne(id)
+        return checkinRepository.findById(id).get()
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(CheckinComponent::class.java!!)
+        private val logger = LoggerFactory.getLogger(CheckinComponent::class.java)
     }
 
 }	
